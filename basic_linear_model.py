@@ -1,15 +1,22 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
 
 filename = 'co2_mm_mlo.txt'
-data = pd.read_table(filename, delimiter='\s+', skiprows=72, names=['0','1','decimal date','average','interpolated','trend','#days'])
+data = pd.read_table(filename, delimiter='\s+', skiprows=72,
+                     names=['0','1','decimal date','average','interpolated','trend','#days'])
 
-x = data['decimal date']
-y = data['interpolated']
+t = data['decimal date']
+x = data['interpolated']
+T = sm.add_constant(t)                              # by default, statsmodels doesn't compute y-intercept
 
-plt.plot(x, y)
+model = sm.OLS(x, T)
+results = model.fit()
+#print(results.summary())
+
+plt.plot(t, x)
+plt.plot(t, results.fittedvalues)
 plt.title('Atmospheric CO2 at Mauna Loa Observatory')
 plt.xlabel('Year')
 plt.ylabel('Parts Per Million')
 plt.show()
-
