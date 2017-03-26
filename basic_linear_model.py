@@ -12,11 +12,17 @@ T = sm.add_constant(t)                              # by default, statsmodels do
 
 model = sm.OLS(x, T)
 results = model.fit()
-#print(results.summary())
+print(results.summary())
 
+plt.figure(1)
+plt.subplot(211)
 plt.plot(t, x)
 plt.plot(t, results.fittedvalues)
 plt.title('Atmospheric CO2 at Mauna Loa Observatory')
-plt.xlabel('Year')
-plt.ylabel('Parts Per Million')
+plt.ylabel('CO2 Concentration (ppmv)')
+
+plt.subplot(212)
+plt.plot(t, results.resid)
+plt.ylabel('Residuals (ppmv)')
+plt.xlabel('Time (years)')
 plt.show()
