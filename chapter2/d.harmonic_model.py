@@ -18,7 +18,14 @@ T = sm.add_constant(t)
 tsquared = t**2                                     # squaring provides the 'quadratic' aspect
 Tsquared = sm.add_constant(tsquared)                # again, by default, statsmodels doesn't compute y-intercept
 
-model = smf.ols(formula = 'co2 ~ T + Tsquared', data = data).fit()
+c1 = np.cos(2*math.pi*t)
+s1 = np.sin(2*math.pi*t)
+c2 = np.cos(4*math.pi*t)
+s2 = np.sin(4*math.pi*t)
+c3 = np.cos(6*math.pi*t)
+s3 = np.sin(6*math.pi*t)
+
+model = smf.ols(formula = 'co2 ~ T + Tsquared + c1 + s1 + c2 +s2 +c3 + s3', data = data).fit()
 results = model.fittedvalues
 print(model.summary())
 
@@ -26,18 +33,17 @@ plt.figure(1)
 plt.subplot(211)
 plt.plot(t, co2)
 plt.plot(t, results)
-plt.title('Quadratic Model of Atmospheric CO2 at Mauna Loa Observatory')
+plt.title('Harmonics Model of Atmospheric CO2 at Mauna Loa Observatory')
 plt.ylabel('CO2 Concentration (ppmv)')
 
 residuals = model.resid
-# c1 = np.cos(2*math.pi*t)
-# s1 = np.sin(2*math.pi*t)
-# residualModel = smf.ols(formula = 'residuals ~ T + Tsquared + c1 + s1', data = residuals).fit()
+'''c1 = np.cos(2*math.pi*t)
+s1 = np.sin(2*math.pi*t)
+residualModel = smf.ols(formula = 'residuals ~ T + Tsquared + c1 + s1', data = residuals).fit()'''
 
 plt.subplot(212)
 plt.plot(t, residuals)
 # plt.plot(t, residualModel.fittedvalues)
 plt.ylabel('Residuals (ppmv)')
 plt.xlabel('Time (years)')
-plt.title('Residuals showing sinusoidal shape')
 plt.show()

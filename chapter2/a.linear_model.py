@@ -25,12 +25,12 @@ plt.ylabel('CO2 Concentration (ppmv)')
 residuals = results.resid
 tsquared = t**2                                     # squaring provides the 'quadratic' aspect
 Tsquared = sm.add_constant(tsquared)                # again, by default, statsmodels doesn't compute y-intercept
-residualModel = smf.ols(formula = 'residuals ~ T + Tsquared', data = residuals).fit()
+# residualModel = smf.ols(formula = 'residuals ~ T + Tsquared', data = residuals).fit()
 
 plt.subplot(212)
 plt.plot(t, residuals)
-plt.plot(t, residualModel.fittedvalues)
+# plt.plot(t, residualModel.fittedvalues)
 plt.ylabel('Residuals (ppmv)')
 plt.xlabel('Time (years)')
-plt.title('Residuals showing quadratic fit')
+plt.title('Residuals showing quadratic shape')
 plt.show()
