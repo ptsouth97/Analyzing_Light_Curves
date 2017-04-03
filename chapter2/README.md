@@ -1,6 +1,6 @@
 
 
-a. linear model: B<sub>0 + B<sub>1t
+a. linear model: B<sub>0</sub> + B<sub>1</sub>t
 
 b. quadratic model:
 
