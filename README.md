@@ -7,4 +7,4 @@
    * [pandas](http://pandas.pydata.org/)
    * [statsmodels](http://statsmodels.sourceforge.net/)
 
-* Atmospheric data used in the examples can be found on [NOAA's Earth System Research Laboratory (ESRL)](https://www.esrl.noaa.gov/gmd/ccgg/trends/)
+* Atmospheric data used in the examples can be found on [NOAA's Earth System Research Laboratory (ESRL)](https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html)
