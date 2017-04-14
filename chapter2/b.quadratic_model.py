@@ -5,8 +5,8 @@ import statsmodels.formula.api as smf
 import math
 import numpy as np
 
-filename = 'co2_mm_mlo.txt'
-data = pd.read_table(filename, delimiter='\s+', skiprows=72,
+url = 'ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_mm_mlo.txt'
+data = pd.read_csv(url, delimiter='\s+', skiprows=72,
                      names=['0','1','decimal date','average','interpolated','trend','#days'])
 
 # time (t) goes on the x-axis anc co2 goes on the y-axis

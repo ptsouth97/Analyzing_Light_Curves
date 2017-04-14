@@ -1,10 +1,11 @@
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
-filename = 'co2_mm_mlo.txt'
-data = pd.read_table(filename, delimiter='\s+', skiprows=72,
+url = 'ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_mm_mlo.txt'
+data = pd.read_csv(url, delimiter='\s+', skiprows=72,
                      names=['0','1','decimal date','average','interpolated','trend','#days'])
 
 t = data['decimal date']
